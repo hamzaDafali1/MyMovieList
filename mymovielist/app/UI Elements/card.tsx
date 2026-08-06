@@ -1,4 +1,4 @@
-
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 export default function Card(){
     return (
@@ -13,11 +13,9 @@ export default function Card(){
                     <span className="text-purple-300">4.8/5 . </span>
                     <span className="text-purple-300">Comedy</span>
                 </div>
-                <p className="text-wrap w-xs text-md">A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
-</p>
-                <div className="flex gap-5 font-medium">
-                <button className="border-1 border-white-200 bg-white text-black p-2">Watched</button>
-                <button className="border-1 border-white-200 bg-white text-black p-2">Watch later</button>
+                <div className="flex gap-4 font-medium">
+                <button className="border-1 border-white-200 bg-white text-black p-1 text-sm"><InformationCircleIcon className="w-6"/></button>
+
                 </div>
             </div>
         </div>
