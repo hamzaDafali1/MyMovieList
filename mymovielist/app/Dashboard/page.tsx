@@ -1,21 +1,27 @@
 
-import Card from "../UI/card";
-import SlideShow from "../UI/Dashboard/slideshow";
+import { SlideShow } from "../UI/Dashboard/slideshow";
 
 export default function Page(){
 
    
 //
     return (
-        <div className="flex flex-col justify-center w-screen align-center content-center pt-25">
+      <div className="flex flex-col justify-center w-full align-center content-center pt-20">
         <div>
-            <h1 className="text-4xl">
-            The Latest Trending Movies 
-            </h1>
+          <h1 className="text-4xl">Popular Movies</h1>
 
-            <SlideShow />
+          <SlideShow listName="popular" lang="en-US" type="movie" />
+        </div>
+        <div>
+          <h1 className="text-4xl">Top Rated English Movies</h1>
 
-            </div>
-       </div>
-    )
+          <SlideShow listName="top_rated" lang="en-US" type="movie" />
+        </div>
+        <div>
+          <h1 className="text-4xl">Top Rated English Movies</h1>
+          
+          <SlideShow listName="popular" lang="en-US" type="serie" />
+        </div>
+      </div>
+    );
 }

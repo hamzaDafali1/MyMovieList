@@ -1,20 +1,62 @@
-import { GetLatestMovies } from "@/app/Data/actions";
-import Card from "../card";
+import { GetMoviesList, GetSerieList } from "@/app/Data/actions";
+import {MovieCard, SerieCard} from "../card";
 
-
-export default async function SlideShow(){
-    const latestmovies = await GetLatestMovies();
-
-
-    return (
-       <div className="flex flex-left w-screen align-center content-center h-fit overflow-scroll mt-7">
-        {latestmovies.map((movie) => {
+export async function SlideShow({
+  listName,
+  lang,
+  type
+}: {
+  listName: string;
+  lang: string;
+  type: string;
+}) {
+  
+  const movieList = type == "movie" ? await GetMoviesList(listName, lang) : [];
+  const serieList = type == "serie" ? await GetSerieList(listName, lang) : [];
+    
+    
+  return (
+    <div>
+      {type == "movie" && (
+        <div
+          className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 max-h-190 overflow-y-auto
+  [&::-webkit-scrollbar]:w-2
+  [&::-webkit-scrollbar-track]:bg-transparent
+  [&::-webkit-scrollbar-thumb]:bg-stone-300
+  dark:[&::-webkit-scrollbar-track]:bg-transparent
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
+ "
+        >
+          {movieList.map((movie) => {
             return (
-            <div  key={movie.id}>
-                <Card movieinfo={movie} />
-            </div>
-            )
-        })}
-       </div>
-    )
+              <div key={movie.id}>
+                <MovieCard cardInfo={movie} />
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {type == "serie" && (
+        <div
+          className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 max-h-190 overflow-y-auto
+  [&::-webkit-scrollbar]:w-2
+  [&::-webkit-scrollbar-track]:bg-transparent
+  [&::-webkit-scrollbar-thumb]:bg-stone-300
+  dark:[&::-webkit-scrollbar-track]:bg-transparent
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
+ "
+        >
+          {serieList.map((serie) => {
+            return (
+              <div key={serie.id}>
+                <SerieCard cardInfo={serie} />
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 }
+
