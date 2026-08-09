@@ -1,4 +1,4 @@
-
+import { Movie } from "@/app/Data/definitions";
 
 export async function GetMovieById(id : string){
    try{
@@ -18,19 +18,21 @@ export async function GetMovieById(id : string){
 
 }
 
-export async function GetLatestMovies(){
+export async function GetLatestMovies(): Promise<Movie[]>{
     try{
-        const response = await fetch(`https://api.themoviedb.org/3/movie/latest`, {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/popular`, {
         headers: {
             Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
             accept: "application/json"
         },
     });
         const data = await response.json();
+       //console.log(data.results);
 
-        return data;
+        return data.results;
 
     }catch(error){
-        return error;
+       console.error(error);
+        return [];
     }
 }
