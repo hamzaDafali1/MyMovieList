@@ -1,4 +1,4 @@
-import { Movie, Serie } from "@/app/Data/definitions";
+import { Movie, Serie } from "@/app/lib/definitions";
 
 export async function GetMovieById(id: string) {
   try {

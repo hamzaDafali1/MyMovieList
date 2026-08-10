@@ -1,7 +1,7 @@
-import { GetMoviesList, GetSerieList } from "@/app/Data/actions";
+import { GetMoviesList, GetSerieList } from "@/app/lib/data";
 import {MovieCard, SerieCard} from "../card";
 
-export async function SlideShow({
+export default async function SlideShow({
   listName,
   lang,
   type
@@ -19,7 +19,7 @@ export async function SlideShow({
     <div>
       {type == "movie" && (
         <div
-          className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 max-h-190 overflow-y-auto
+          className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 h-fit overflow-y-auto
   [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:bg-transparent
   [&::-webkit-scrollbar-thumb]:bg-stone-300
@@ -39,7 +39,7 @@ export async function SlideShow({
 
       {type == "serie" && (
         <div
-          className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 max-h-190 overflow-y-auto
+          className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 h-fit overflow-y-auto
   [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:bg-transparent
   [&::-webkit-scrollbar-thumb]:bg-stone-300
