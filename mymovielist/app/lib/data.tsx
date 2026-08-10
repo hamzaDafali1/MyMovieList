@@ -1,5 +1,6 @@
 import { Movie, Serie } from "@/app/lib/definitions";
 
+
 export async function GetMovieById(id: string) {
   try {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {

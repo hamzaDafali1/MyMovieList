@@ -5,10 +5,11 @@ import Banner from "../ui/dashboard/banner";
 export default function Page(){
 
    
-//
+//add the watching now slideshow later
     return (
       <div className="flex flex-col justify-center w-full items-center content-center pt-20">
           <Banner />
+
 
         <div className="w-6/7 flex flex-col justify-center align-center content-center">
           <div>
