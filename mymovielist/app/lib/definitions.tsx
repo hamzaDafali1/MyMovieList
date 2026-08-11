@@ -7,6 +7,9 @@ export interface Movie {
   poster_path: string;
   original_language: string;
   backdrop_path: string;
+  genres: string[];
+  tagline: string;
+
 }
 
 export interface Serie {
@@ -17,4 +20,12 @@ export interface Serie {
   overview: string;
   poster_path: string;
   original_language: string;
+}
+
+export interface CastActor {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string;
+  known_for_department: string;
 }

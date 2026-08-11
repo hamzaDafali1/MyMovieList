@@ -1,6 +1,6 @@
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-import { GetMovieById } from "../lib/data";
-import { Movie, Serie } from "@/app/lib/definitions";
+import { GetMovieById, GetMovieCast } from "../lib/data";
+import { Movie, Serie, CastActor } from "@/app/lib/definitions";
 import Link from "next/link";
 
 export async function MovieCard({ cardInfo }: { cardInfo: Movie }) {
@@ -61,5 +61,14 @@ export async function SerieCard({ cardInfo }: { cardInfo: Serie }) {
     </div>
   );
 }
+
+export async function ActorCard({ cardInfo }: { cardInfo: CastActor }){
+
+  return (
+    <div>
+
+    </div>
+  )
+};
 
 
