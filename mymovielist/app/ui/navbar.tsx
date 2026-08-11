@@ -5,7 +5,7 @@ import {Cog6ToothIcon, MagnifyingGlassIcon} from "@heroicons/react/24/outline"
 export default function NavBar(){
     return (
       <div className="fixed flex flex-col justify-center z-10">
-        <div className=" flex flex-row text-white w-screen bg-blue-500 py-3 text-md justify-center items-center h-16 font-bold">
+        <div className=" flex flex-row text-white w-screen bg-linear-to-br from-violet-500 to-blue-500 py-3 text-md justify-center items-center h-16 font-bold">
           <img
             className="mr-20 w-10 "
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/960px-Google_Favicon_2025.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"

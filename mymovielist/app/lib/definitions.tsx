@@ -6,6 +6,7 @@ export interface Movie {
   overview: string;
   poster_path: string;
   original_language: string;
+  backdrop_path: string;
 }
 
 export interface Serie {
