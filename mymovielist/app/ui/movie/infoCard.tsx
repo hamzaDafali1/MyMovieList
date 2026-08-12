@@ -2,7 +2,7 @@ import { GetMovieById } from "@/app/lib/data";
 import { InfoCardImgLink, BackdropImgLink } from "@/app/lib/globals";
 import { BookmarkIcon, HeartIcon, ListBulletIcon } from "@heroicons/react/24/outline";
 
-export default async function infoCard({ movieId }: { movieId: string }) {
+export default async function infoCard({ movieId }: { movieId: number }) {
   const movieInfo = await GetMovieById(movieId);
 
   return (

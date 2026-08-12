@@ -2,7 +2,7 @@ import { CastActor, Movie, Serie } from "@/app/lib/definitions";
 import { env } from "process";
 
 
-export async function GetMovieById(id: string) {
+export async function GetMovieById(id: number) {
   try {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
       headers: {
@@ -63,25 +63,27 @@ export async function GetSerieList(listName: string, lang: string): Promise<Seri
   }
 }
 
-export async function GetMovieCast({id}: {id:number}) : Promise<CastActor[]>{
+export async function GetMovieCast(id:number) : Promise<CastActor[]>{
 
   try{
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits` , {
-      headers :{
-        Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
-        accept: "application/json"
-                },
-    },
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+          accept: "application/json",
+        },
+      },
     );
 
     const data = await response.json();
 
-    const cast = data.resaults.filter((person:CastActor) =>{
-      person.known_for_department == "Acting";
-    })
+    const cast = data.cast.filter((person:CastActor) =>
+      person.known_for_department == "Acting"
+    )
 
     return cast;
-  
+
   } catch (error){
     console.error(error);
     return [];
