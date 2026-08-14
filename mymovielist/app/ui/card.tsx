@@ -64,8 +64,8 @@ export async function SerieCard({ cardInfo }: { cardInfo: Serie }) {
 //
 export async function ActorCard({ cardInfo }: { cardInfo: CastActor }) {
   return (
-    <div className="flex flex-col items-center gap-6 rounded-2xl  w-fit text-md mr-5 h-fit bg-blue-500">
-      <Link href={`/serie/`}>
+    <div className="flex flex-col items-center gap-6 rounded-2xl  w-fit text-md mr-5 h-fit bg-linear-to-bl from-violet-500 to-blue-500">
+      <Link href={`/actor/${cardInfo.id}`}>
         <div className="flex flex-col w-[160] ">
           <div className="relative">
             <img
@@ -75,7 +75,7 @@ export async function ActorCard({ cardInfo }: { cardInfo: CastActor }) {
           </div>
           <div className="flex flex-col pt-4 px-3 h-35">
             <h1 className="text-lg font-bold">{cardInfo.name}</h1>
-            <div className="flex gap-2 text-blue-500 dark:text-white gap-y-8">
+            <div className="flex gap-2 dark:text-white gap-y-8">
               <span className="text-sm">{cardInfo.character}</span>
             </div>
           </div>

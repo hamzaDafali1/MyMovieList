@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer(){
     return (
       <div className="flex flex-col items-center ">
-        <div className="bg-blue-500 w-6/7 h-50 flex flex-row p-5 pl-30 ">
+        <div className="bg-linear-to-br from-violet-500 to-blue-500 w-6/7 h-50 flex flex-row p-5 pl-30 ">
           <div className="flex flex-col border-l-2 pl-4 mr-30">
             <h4 className="text-lg font-semibold mb-2">Website</h4>
             <ul className="text-md">
@@ -31,7 +31,8 @@ export default function Footer(){
           </div>
           <div className="flex flex-col border-l-2 pl-4">
             <div className="text-md">
-              <img className="w-15"
+              <img
+                className="w-15"
                 src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
                 alt=""
               />
