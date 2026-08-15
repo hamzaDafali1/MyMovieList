@@ -60,7 +60,7 @@ export default async function infoCard({ movieId }: { movieId: number }) {
               </a>
             </div>
             <div>
-              <span className="text-lg text-white italic text-gray-200 inline-block rounded-lg p-1 m-1  text-nowrap">
+              <span className="text-lg text-white italic text-gray-200 inline-block rounded-lg p-1 m-1 ">
                 {movieInfo.tagline}
               </span>
             </div>

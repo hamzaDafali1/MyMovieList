@@ -66,10 +66,10 @@ export async function ActorCard({ cardInfo }: { cardInfo: CastActor }) {
   return (
     <div className="flex flex-col items-center gap-6 rounded-2xl  w-fit text-md mr-5 h-fit bg-linear-to-bl from-violet-500 to-blue-500">
       <Link href={`/actor/${cardInfo.id}`}>
-        <div className="flex flex-col w-[160] ">
+        <div className="flex flex-col w-[150] ">
           <div className="relative">
             <img
-              className="w-[160] rounded-t-lg"
+              className="w-[150] rounded-t-lg"
               src={`${CastActorImgLink}${cardInfo.profile_path}`}
             />
           </div>

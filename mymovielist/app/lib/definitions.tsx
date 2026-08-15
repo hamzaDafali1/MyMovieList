@@ -29,3 +29,11 @@ export interface CastActor {
   profile_path: string;
   known_for_department: string;
 }
+
+export interface MovieInfo {
+  status: string;
+  budget: number;
+  original_language: string;
+  revenue: number;
+  genres: string[];
+}

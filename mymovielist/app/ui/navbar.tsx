@@ -46,7 +46,7 @@ export default function NavBar(){
               placeholder="Search for movies, series and actors"
             />
             <input
-              className="border px-5 py-1 text-white bg-blue-500 font-medium w-1/7"
+              className="border px-auto py-1 text-white bg-blue-500 font-medium w-1/7 align-center"
               type="submit"
               value="Search"
             />
