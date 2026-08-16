@@ -1,9 +1,13 @@
-import { GetMovieById } from "@/app/lib/data";
+import { GetMovieById, GetMovieCrew } from "@/app/lib/data";
 import { InfoCardImgLink, BackdropImgLink } from "@/app/lib/globals";
 import { BookmarkIcon, HeartIcon, ListBulletIcon } from "@heroicons/react/24/outline";
+import Link from 'next/link';
 
 export default async function infoCard({ movieId }: { movieId: number }) {
   const movieInfo = await GetMovieById(movieId);
+  const crew = await GetMovieCrew(movieId);
+  const director = crew.filter((person) => person.job == "Director");
+
 
   return (
     <div
@@ -60,16 +64,26 @@ export default async function infoCard({ movieId }: { movieId: number }) {
               </a>
             </div>
             <div>
-              <span className="text-lg text-white italic text-gray-200 inline-block rounded-lg p-1 m-1 ">
+              <span className="text-md text-white italic text-gray-200 inline-block rounded-lg p-1 m-1 ">
                 {movieInfo.tagline}
               </span>
             </div>
             <div>
-              <span className="text-lg text-white text-gray-200 inline-block rounded-lg p-1 m-1 mt-3">
+              <span className="text-lg text-white text-gray-200 inline-block rounded-lg p-1 m-1 mt-1 font-semibold">
                 Overview
               </span>
-              <span className="text-md text-white text-gray-200 inline-block rounded-lg p-1 m-1 mt-3 text-wrap">
+              <span className="text-md text-white text-gray-200 inline-block rounded-lg p-1 m-1 mt-1 text-wrap">
                 {movieInfo.overview}
+              </span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-lg text-white text-gray-200 inline px-1 mx-1 mt-4 ">
+                Director:
+              </span>
+              <span className="text-md text-white text-gray-200 inline px-1 mx-1  text-wrap underline">
+                <Link href={`/person/${director[0].id}`}>
+                  {director[0].name}
+                </Link>
               </span>
             </div>
           </div>

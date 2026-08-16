@@ -17,7 +17,7 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
           <CastSlideShow id={id} />
         </div>
         <div className="flex flex-col w-1/2 pl-10">
-          <ExtraInfo id={5} />
+          <ExtraInfo movieId={id} />
         </div>
       </div>
     </div>

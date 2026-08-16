@@ -13,7 +13,7 @@ export default async function CastSlideShow({ id }: { id: number }) {
   dark:[&::-webkit-scrollbar-track]:bg-transparent
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 pb-3 w-full"
     >
-      {cast.slice(0, 10).map((actor) => {
+      {cast.slice(0, 9).map((actor) => {
         return (
           <div key={actor.id}>
             <ActorCard cardInfo={actor} />

@@ -9,7 +9,6 @@ export interface Movie {
   backdrop_path: string;
   genres: string[];
   tagline: string;
-
 }
 
 export interface Serie {
@@ -30,10 +29,23 @@ export interface CastActor {
   known_for_department: string;
 }
 
+export interface MovieCrew {
+  id: number;
+  name: string;
+  department: string;
+  job: string;
+  known_for_department: string;
+}
+
 export interface MovieInfo {
   status: string;
   budget: number;
   original_language: string;
   revenue: number;
   genres: string[];
+}
+
+export interface Genre {
+  name: string;
+  id: number;
 }

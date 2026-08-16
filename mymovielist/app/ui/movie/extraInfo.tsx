@@ -1,49 +1,49 @@
-export default async function ExtraInfo({id} : {id : number}){
+import { GetMovieById } from "@/app/lib/data";
+import { Genre } from "@/app/lib/definitions";
 
+export default async function ExtraInfo({ movieId }: { movieId: number }) {
+  const extrainfo = await GetMovieById(movieId);
 
-    return (
-      <div className="h-full">
-        <div>
-          <h1 className="text-4xl text-white font-bold">
-            qsdsq
-            <span className="text-gray-200 font-normal">qsdqsd</span>
-          </h1>
-        </div>
+  /*status: string;
+  budget: number;
+  original_language: string;
+  revenue: number;
+  genres: string[];*/
 
-        <div>
-          <span className="text-lg text-white font-bold bg-violet-500 inline-block rounded-lg p-1 m-1 mt-3">
-            qsdq
-          </span>
-          <span className="font-semibold">sqddfs</span>
-        </div>
-        <div className="flex flew-row gap-2">
-          <a
-            href="#"
-            className="w-10 text-lg text-white font-bold bg-black inline-block rounded-full p-2 m-1 mt-3"
-          ></a>
-          <a
-            href="#"
-            className="w-10 text-lg text-white font-bold bg-black inline-block rounded-full p-2 m-1 mt-3"
-          ></a>
-
-          <a
-            href="#"
-            className="w-10 text-lg text-white font-bold bg-black inline-block rounded-full p-2 m-1 mt-3"
-          ></a>
-        </div>
-        <div>
-          <span className="text-lg text-white italic text-gray-200 inline-block rounded-lg p-1 m-1 ">
-            qsddsff
-          </span>
-        </div>
-        <div>
-          <span className="text-lg text-white text-gray-200 inline-block rounded-lg p-1 m-1 mt-3">
-            Overview
-          </span>
-          <span className="text-md text-white text-gray-200 inline-block rounded-lg p-1 m-1 mt-3 text-wrap">
-            qsdsf
-          </span>
-        </div>
+  return (
+    <div className="h-full w-full">
+      <div className="h-full w-full">
+        <ul className="flex flex-col gap-5 w-full">
+          <li>
+            <h3 className="font-semibold text-lg">Status</h3>
+            <p>{extrainfo.status}</p>
+          </li>
+          <li>
+            <h3 className="font-semibold text-lg">Language</h3>
+            <p>{extrainfo.spoken_languages[0].name}</p>
+          </li>
+          <li>
+            <h3 className="font-semibold text-lg">Genres</h3>
+            <p className="flex flex-wrap gap-2">
+              {extrainfo.genres.map((genre: Genre) => {
+                return (
+                  <span className="p-1 bg-blue-500 " key={genre.id}>
+                    {genre.name}
+                  </span>
+                );
+              })}
+            </p>
+          </li>
+          <li>
+            <h3 className="font-semibold text-lg">budget</h3>
+            <p>{extrainfo.budget}$</p>
+          </li>
+          <li>
+            <h3 className="font-semibold text-lg">revenue</h3>
+            <p>{extrainfo.revenue}$</p>
+          </li>
+        </ul>
       </div>
-    );
+    </div>
+  );
 }
