@@ -1,6 +1,7 @@
 import CastSlideShow from "@/app/ui/serie/castslideshow";
 import InfoCard from "@/app/ui/serie/infoCard";
 import ExtraInfo from "@/app/ui/serie/extraInfo";
+import SeasonList from "@/app/ui/serie/seasonList";
 
 export default async function Page(props: { params: Promise<{ id: number }> }) {
   const params = await props.params;
@@ -18,6 +19,12 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
         </div>
         <div className="flex flex-col w-1/2 pl-10">
           <ExtraInfo movieId={id} />
+        </div>
+      </div>
+      <div className="flex flex-col align-center w-2/3 gap-5">
+        <h5 className="text-3xl">Episodes</h5>
+        <div className="text-lg flex">
+          <SeasonList id={id} />
         </div>
       </div>
     </div>

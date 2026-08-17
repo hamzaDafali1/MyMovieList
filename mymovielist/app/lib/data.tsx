@@ -4,6 +4,7 @@ import {
   Serie,
   MovieInfo,
   MovieCrew,
+  SerieEpisode
 } from "@/app/lib/definitions";
 import { env } from "process";
 
@@ -172,6 +173,32 @@ export async function GetSerieCast(id: number): Promise<CastActor[]> {
     );
 
     return cast;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export async function GetSerieEpisodes(
+  id: number,
+  nbrSeasons: number,
+): Promise<SerieEpisode[]> {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/season/${nbrSeasons}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+          accept: "application/json",
+        },
+      },
+    );
+
+    const data = await response.json();
+
+    const episodes = data.episodes;
+
+    return episodes;
   } catch (error) {
     console.error(error);
     return [];
