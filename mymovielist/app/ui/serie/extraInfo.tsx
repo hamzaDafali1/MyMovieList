@@ -1,8 +1,8 @@
-import { GetMovieById } from "@/app/lib/data";
+import { GetSerieById } from "@/app/lib/data";
 import { Genre } from "@/app/lib/definitions";
 
 export default async function ExtraInfo({ movieId }: { movieId: number }) {
-  const extrainfo = await GetMovieById(movieId);
+  const extrainfo = await GetSerieById(movieId);
 
   /*status: string;
   budget: number;
@@ -13,22 +13,18 @@ export default async function ExtraInfo({ movieId }: { movieId: number }) {
   return (
     <div className="h-full w-full">
       <div className="h-full w-full">
-        <ul className="flex flex-col gap-5 w-full">
+        <ul className="flex flex-row gap-5 w-full md:flex-col">
           <li>
             <h3 className="font-semibold text-lg">Status</h3>
             <p>{extrainfo.status}</p>
           </li>
           <li>
+            <h3 className="font-semibold text-lg">Number of Seasons</h3>
+            <p>{extrainfo.number_of_seasons}</p>
+          </li>
+          <li>
             <h3 className="font-semibold text-lg">Language</h3>
             <p>{extrainfo.spoken_languages[0].name}</p>
-          </li>
-          <li>
-            <h3 className="font-semibold text-lg">budget</h3>
-            <p>{extrainfo.budget}$</p>
-          </li>
-          <li>
-            <h3 className="font-semibold text-lg">revenue</h3>
-            <p>{extrainfo.revenue}$</p>
           </li>
         </ul>
       </div>

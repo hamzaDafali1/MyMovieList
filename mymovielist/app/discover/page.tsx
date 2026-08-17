@@ -1,6 +1,5 @@
-
-import SlideShow  from "../ui/dashboard/slideshow";
-import Banner from "../ui/dashboard/banner";
+import SlideShow  from "../ui/discover/slideshow";
+import Banner from "../ui/discover/banner";
 
 export default function Page(){
 

@@ -47,30 +47,6 @@ export async function GetMoviesList(
   }
 }
 
-export async function GetSerieList(
-  listName: string,
-  lang: string,
-): Promise<Serie[]> {
-  try {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/tv/${listName}?language=${lang}`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
-          accept: "application/json",
-        },
-      },
-    );
-    const data = await response.json();
-    //console.log(data.results);
-
-    return data.results;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
-
 export async function GetMovieCast(id: number): Promise<CastActor[]> {
   try {
     const response = await fetch(
@@ -134,5 +110,70 @@ export async function GetMovieInfoById(id: number) {
     return data;
   } catch (error) {
     return error;
+  }
+}
+
+export async function GetSerieById(id: number) {
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${id}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+        accept: "application/json",
+      },
+    });
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function GetSerieList(
+  listName: string,
+  lang: string,
+): Promise<Serie[]> {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${listName}?language=${lang}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+          accept: "application/json",
+        },
+      },
+    );
+    const data = await response.json();
+    //console.log(data.results);
+
+    return data.results;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export async function GetSerieCast(id: number): Promise<CastActor[]> {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/credits`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+          accept: "application/json",
+        },
+      },
+    );
+
+    const data = await response.json();
+
+    const cast = data.cast.filter(
+      (person: CastActor) => person.known_for_department == "Acting",
+    );
+
+    return cast;
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 }

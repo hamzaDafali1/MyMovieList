@@ -1,14 +1,17 @@
-import { GetMovieById, GetMovieCrew } from "@/app/lib/data";
+import { GetSerieById, GetMovieCrew } from "@/app/lib/data";
 import { InfoCardImgLink, BackdropImgLink } from "@/app/lib/globals";
-import { BookmarkIcon, HeartIcon, ListBulletIcon } from "@heroicons/react/24/outline";
+import {
+  BookmarkIcon,
+  HeartIcon,
+  ListBulletIcon,
+} from "@heroicons/react/24/outline";
 import { Genre } from "@/app/lib/definitions";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default async function infoCard({ movieId }: { movieId: number }) {
-  const movieInfo = await GetMovieById(movieId);
+  const movieInfo = await GetSerieById(movieId);
   const crew = await GetMovieCrew(movieId);
   const director = crew.filter((person) => person.job == "Director");
-
 
   return (
     <div
@@ -28,34 +31,31 @@ export default async function infoCard({ movieId }: { movieId: number }) {
           <div className="flex flex-col w-1/2 pl-10">
             <div>
               <h1 className="text-4xl text-white font-bold">
-                {movieInfo.original_title}{" "}
+                {movieInfo.original_name}{" "}
                 <span className="text-gray-200 font-normal">
-                  ({movieInfo.release_date.slice(0, 4)})
+                  ({movieInfo.first_air_date.slice(0, 4)})
                 </span>
               </h1>
             </div>
 
             <div>
-                          <span className="text-lg text-white font-bold bg-violet-500 inline-block rounded-lg px-1 m-1 my-3">
-                            {movieInfo.vote_average.toFixed(1)}/10
-                          </span>
-                          .
-                          <span className="font-semibold"> {movieInfo.release_date}</span>
-                          <span className="font-semibold flex flex-col">
-                            <span className="flex flex-wrap gap-2 text-sm">
-                              {movieInfo.genres.map((genre: Genre) => {
-                                return (
-                                  <span
-                                    className="p-1 bg-blue-500 text-nowrap"
-                                    key={genre.id}
-                                  >
-                                    {genre.name}
-                                  </span>
-                                );
-                              })}
-                            </span>
-                          </span>
-                        </div>
+              <span className="text-lg text-white font-bold bg-violet-500 inline-block rounded-lg px-1 m-1 my-3">
+                {movieInfo.vote_average.toFixed(1)}/10
+              </span>
+              .
+              <span className="font-semibold"> {movieInfo.first_air_date}</span>
+              <span className="font-semibold flex flex-col">
+                <span className="flex flex-wrap gap-2 text-sm">
+                  {movieInfo.genres.map((genre: Genre) => {
+                    return (
+                      <span className="p-1 bg-blue-500 " key={genre.id}>
+                        {genre.name}
+                      </span>
+                    );
+                  })}
+                </span>
+              </span>
+            </div>
             <div className="flex flew-row gap-2">
               <a
                 href="#"
