@@ -7,7 +7,8 @@ import {
   MovieInfo,
   MovieCrew,
   SerieEpisode,
-  SeasonInfo
+  SeasonInfo,
+  SerieCrew,
 } from "@/app/lib/definitions";
 import { env } from "process";
 
@@ -187,33 +188,49 @@ export async function GetSeasonInfo(
   nbrSeasons: number,
 ): Promise<SeasonInfo[]> {
   try {
-
-    const reqs = Array.from(
-      { length: nbrSeasons },
+    const urls = Array.from(
+      { length: nbrSeasons+1 },
       (_, index) => `https://api.themoviedb.org/3/tv/${id}/season/${index}`,
     );
 
-    const fetchPromises = reqs.map((url) => fetch(url,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
-          accept: "application/json",
-        },
-      },));
+    console.log(urls);
+    
 
-    const responses = await Promise.all(fetchPromises);
-
-    const jsonPromises = responses.map(res => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
+    const promises = urls.map(async (url) => {
+      try {
+        const response = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+            accept: "application/json",
+          },
+        });
+        if (!response.ok) return null;
+        return await response.json();
+      } catch (e) {
+        return null;
+      }
     });
 
-    const seasons = await Promise.all<SeasonInfo>(jsonPromises);
+    const results = await Promise.allSettled(promises);
 
-    return seasons;
+    const seasons = results
+      .filter((res) => res.status === "fulfilled")
+      .map((res) => res.value);
 
-    /* const response = await fetch(
-      `https://api.themoviedb.org/3/tv/${id}/season/${nbrSeasons}`,
+    const filterdSeasons = seasons.filter((season) => season!= null);
+
+
+    return filterdSeasons;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export async function GetSerieCrew(id: number): Promise<SerieCrew[]> {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/credits`,
       {
         headers: {
           Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
@@ -224,9 +241,11 @@ export async function GetSeasonInfo(
 
     const data = await response.json();
 
-    const episodes = data.episodes;
+    const cast = data.crew.filter(
+      (person: SerieCrew) => person.known_for_department != "Acting",
+    );
 
-    return episodes; */
+    return cast;
   } catch (error) {
     console.error(error);
     return [];

@@ -1,4 +1,4 @@
-import { GetSerieById, GetMovieCrew } from "@/app/lib/data";
+import { GetSerieById, GetSerieCrew } from "@/app/lib/data";
 import { InfoCardImgLink, BackdropImgLink } from "@/app/lib/globals";
 import {
   BookmarkIcon,
@@ -8,10 +8,10 @@ import {
 import { Genre } from "@/app/lib/definitions";
 import Link from "next/link";
 
-export default async function infoCard({ movieId }: { movieId: number }) {
-  const movieInfo = await GetSerieById(movieId);
-  const crew = await GetMovieCrew(movieId);
-  const director = crew.filter((person) => person.job == "Director");
+export default async function infoCard({ serieId }: { serieId: number }) {
+  const movieInfo = await GetSerieById(serieId);
+  const crew = await GetSerieCrew(serieId);
+  const director = movieInfo.created_by;
 
   return (
     <div
@@ -21,14 +21,17 @@ export default async function infoCard({ movieId }: { movieId: number }) {
       className="flex flex-row bg-cover"
     >
       <div className="flex flex-col ">
-        <div className="flex flex-row bg-radial from-[#303030]/70 from-70% to-black w-auto p-10 justify-center">
-          <div className="">
+        <div
+          className="flex flex-col bg-radial align-center content-center
+ from-[#303030]/70 from-70% to-black w-auto p-10 justify-center md:flex-row"
+        >
+          <div className="flex flex-col items-center align-center content-center w-full md:flex-none md:w-fit ">
             <img
-              className="rounded-xl"
+              className="rounded-xl w-fit mb-12 md:mb-0"
               src={`${InfoCardImgLink}${movieInfo.poster_path}`}
             />
           </div>
-          <div className="flex flex-col w-1/2 pl-10">
+          <div className="flex  flex-col w-full items-center md:w-1/2 md:items-start pl-10">
             <div>
               <h1 className="text-4xl text-white font-bold">
                 {movieInfo.original_name}{" "}
@@ -38,7 +41,7 @@ export default async function infoCard({ movieId }: { movieId: number }) {
               </h1>
             </div>
 
-            <div>
+            <div className="">
               <span className="text-lg text-white font-bold bg-violet-500 inline-block rounded-lg px-1 m-1 my-3">
                 {movieInfo.vote_average.toFixed(1)}/10
               </span>
@@ -78,7 +81,7 @@ export default async function infoCard({ movieId }: { movieId: number }) {
               </a>
             </div>
             <div>
-              <span className="text-md text-white italic text-gray-200 inline-block rounded-lg p-1 m-1 ">
+              <span className="text-lg text-white italic text-gray-200 inline-block rounded-lg p-1 m-1 md:text-md">
                 {movieInfo.tagline}
               </span>
             </div>
@@ -90,11 +93,11 @@ export default async function infoCard({ movieId }: { movieId: number }) {
                 {movieInfo.overview}
               </span>
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg text-white text-gray-200 inline px-1 mx-1 mt-4 ">
-                Director:
+            <div className="flex flex-row md:flex-col mt-7 ">
+              <span className="text-lg text-white text-gray-200 inline px-1 mx-1  ">
+                Creator:
               </span>
-              <span className="text-md text-white text-gray-200 inline px-1 mx-1  text-wrap underline">
+              <span className="text-md text-white text-gray-200 inline px-1 mx-1 content-center text-wrap underline ">
                 <Link href={`/person/${director[0].id}`}>
                   {director[0].name}
                 </Link>

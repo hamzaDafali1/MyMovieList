@@ -20,6 +20,8 @@ export interface Serie {
   poster_path: string;
   original_language: string;
   number_of_seasons: number;
+  seasons: SeasonInfo[];
+  created_by: SerieCrew[];
 }
 
 export interface CastActor {
@@ -31,6 +33,14 @@ export interface CastActor {
 }
 
 export interface MovieCrew {
+  id: number;
+  name: string;
+  department: string;
+  job: string;
+  known_for_department: string;
+}
+
+export interface SerieCrew {
   id: number;
   name: string;
   department: string;
@@ -68,7 +78,7 @@ export interface Genre {
 */
 export interface SeasonInfo {
   id: number;
-  episode_number: number;
+  episodes: SerieEpisode[];
   name: string;
   overview: string;
   air_date: number;
