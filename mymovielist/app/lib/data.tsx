@@ -1,10 +1,13 @@
+"use server";
+
 import {
   CastActor,
   Movie,
   Serie,
   MovieInfo,
   MovieCrew,
-  SerieEpisode
+  SerieEpisode,
+  SeasonInfo
 } from "@/app/lib/definitions";
 import { env } from "process";
 
@@ -179,12 +182,37 @@ export async function GetSerieCast(id: number): Promise<CastActor[]> {
   }
 }
 
-export async function GetSerieEpisodes(
+export async function GetSeasonInfo(
   id: number,
   nbrSeasons: number,
-): Promise<SerieEpisode[]> {
+): Promise<SeasonInfo[]> {
   try {
-    const response = await fetch(
+
+    const reqs = Array.from(
+      { length: nbrSeasons },
+      (_, index) => `https://api.themoviedb.org/3/tv/${id}/season/${index}`,
+    );
+
+    const fetchPromises = reqs.map((url) => fetch(url,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+          accept: "application/json",
+        },
+      },));
+
+    const responses = await Promise.all(fetchPromises);
+
+    const jsonPromises = responses.map(res => {
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      return res.json();
+    });
+
+    const seasons = await Promise.all<SeasonInfo>(jsonPromises);
+
+    return seasons;
+
+    /* const response = await fetch(
       `https://api.themoviedb.org/3/tv/${id}/season/${nbrSeasons}`,
       {
         headers: {
@@ -198,7 +226,7 @@ export async function GetSerieEpisodes(
 
     const episodes = data.episodes;
 
-    return episodes;
+    return episodes; */
   } catch (error) {
     console.error(error);
     return [];

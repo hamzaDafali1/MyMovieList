@@ -66,6 +66,16 @@ export interface Genre {
       "vote_average": 8.1,
       "vote_count": 396,
 */
+export interface SeasonInfo {
+  id: number;
+  episode_number: number;
+  name: string;
+  overview: string;
+  air_date: number;
+  season_number: number;
+  poster_path: string;
+}
+
 
 export interface SerieEpisode {
   id: number;
@@ -76,3 +86,4 @@ export interface SerieEpisode {
   season_number: number;
   still_path: string;
 }
+

@@ -2,10 +2,12 @@ import CastSlideShow from "@/app/ui/serie/castslideshow";
 import InfoCard from "@/app/ui/serie/infoCard";
 import ExtraInfo from "@/app/ui/serie/extraInfo";
 import SeasonList from "@/app/ui/serie/seasonList";
+import { GetSerieById} from "@/app/lib/data";
 
 export default async function Page(props: { params: Promise<{ id: number }> }) {
   const params = await props.params;
   const id = params.id;
+  const movieInfo = await GetSerieById(id);
 
   return (
     <div className="flex flex-col pt-25 items-center">
@@ -22,9 +24,9 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
         </div>
       </div>
       <div className="flex flex-col align-center w-2/3 gap-5">
-        <h5 className="text-3xl">Episodes</h5>
+        <h5 className="text-3xl">Seasons</h5>
         <div className="text-lg flex">
-          <SeasonList id={id} />
+          <SeasonList id={id} nbrSeasons={movieInfo.number_of_seasons} />
         </div>
       </div>
     </div>
