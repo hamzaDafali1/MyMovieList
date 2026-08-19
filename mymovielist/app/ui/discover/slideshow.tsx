@@ -12,12 +12,13 @@ export default async function SlideShow({
 }) {
   
   const movieList = type == "movie" ? await GetMoviesList(listName, lang) : [];
-  const serieList = type == "serie" ? await GetSerieList(listName, lang) : [];
+  const serieList =
+    type == "serie" ? await GetSerieList(listName, lang) : [];
     
     
   return (
     <div>
-      {type == "movie" && (
+      {type == "movie" && movieList != null && (
         <div
           className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 h-fit overflow-y-auto
   [&::-webkit-scrollbar]:w-2
@@ -37,7 +38,7 @@ export default async function SlideShow({
         </div>
       )}
 
-      {type == "serie" && (
+      {type == "serie" && serieList != null && (
         <div
           className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 h-fit overflow-y-auto
   [&::-webkit-scrollbar]:w-2
