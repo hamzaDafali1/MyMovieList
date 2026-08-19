@@ -9,6 +9,8 @@ export default async function ExtraInfo({ movieId }: { movieId: number }) {
   original_language: string;
   revenue: number;
   genres: string[];*/
+  console.log(extrainfo.spoken_languages);
+  
 
   return (
     <div className="h-full w-full">
@@ -22,10 +24,16 @@ export default async function ExtraInfo({ movieId }: { movieId: number }) {
             <h3 className="font-semibold text-lg">Number of Seasons</h3>
             <p>{extrainfo.number_of_seasons}</p>
           </li>
-          <li>
-            <h3 className="font-semibold text-lg">Language</h3>
-            <p>{extrainfo.spoken_languages[0].name}</p>
-          </li>
+          {extrainfo.spoken_languages[0] && (
+            <li>
+              <h3 className="font-semibold text-lg">Language</h3>
+              <p>
+                {extrainfo.spoken_languages
+                  ? extrainfo.spoken_languages[0].name
+                  : ""}
+              </p>
+            </li>
+          )}
         </ul>
       </div>
     </div>

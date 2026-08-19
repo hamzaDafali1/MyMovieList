@@ -1,5 +1,5 @@
 import { GetSerieCast } from "@/app/lib/data";
-import { ActorCard } from "@/app/ui/card";
+import { ActorCard } from "@/app/ui/cards";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link"
 

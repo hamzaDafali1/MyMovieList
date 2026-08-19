@@ -193,7 +193,6 @@ export async function GetSeasonInfo(
       (_, index) => `https://api.themoviedb.org/3/tv/${id}/season/${index}`,
     );
 
-    console.log(urls);
     
 
     const promises = urls.map(async (url) => {

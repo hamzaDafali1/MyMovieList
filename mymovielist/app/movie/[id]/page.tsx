@@ -7,7 +7,7 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
   const id = params.id;
 
   return (
-    <div className="flex flex-col pt-25 items-center">
+    <div className="flex flex-col items-center">
       <div>
         <InfoCard movieId={id} />
       </div>

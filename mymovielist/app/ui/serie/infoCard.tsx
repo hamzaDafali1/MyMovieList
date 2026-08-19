@@ -11,7 +11,9 @@ import Link from "next/link";
 export default async function infoCard({ serieId }: { serieId: number }) {
   const movieInfo = await GetSerieById(serieId);
   const crew = await GetSerieCrew(serieId);
-  const director = movieInfo.created_by;
+  const creator = movieInfo.created_by[0] ? movieInfo.created_by : [{id: 0}];
+  console.log(movieInfo.created_by);
+  
 
   return (
     <div
@@ -93,16 +95,18 @@ export default async function infoCard({ serieId }: { serieId: number }) {
                 {movieInfo.overview}
               </span>
             </div>
-            <div className="flex flex-row md:flex-col mt-7 ">
-              <span className="text-lg text-white text-gray-200 inline px-1 mx-1  ">
-                Creator:
-              </span>
-              <span className="text-md text-white text-gray-200 inline px-1 mx-1 content-center text-wrap underline ">
-                <Link href={`/person/${director[0].id}`}>
-                  {director[0].name}
-                </Link>
-              </span>
-            </div>
+            {creator[0].id != 0 && (
+              <div className="flex flex-row md:flex-col mt-7 ">
+                <span className="text-lg text-white text-gray-200 inline px-1 mx-1  ">
+                  Creator:
+                </span>
+                <span className="text-md text-white text-gray-200 inline px-1 mx-1 content-center text-wrap underline ">
+                  <Link href={`/person/${creator[0].id}`}>
+                    {creator[0].name}
+                  </Link>
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>
