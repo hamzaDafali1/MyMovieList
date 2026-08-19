@@ -1,5 +1,6 @@
 import { GetMoviesList, GetSerieList } from "@/app/lib/data";
 import {MovieCard, SerieCard} from "../card";
+import { Movie, Serie } from "@/app/lib/definitions";
 
 export default async function SlideShow({
   listName,
@@ -10,8 +11,35 @@ export default async function SlideShow({
   lang: string;
   type: string;
 }) {
+
+  const testMovie: Movie = {
+    id: 2,
+    original_title: "string",
+    release_date: "string",
+    vote_average: 3,
+    overview: "string",
+    poster_path: "string",
+    original_language: "string",
+    backdrop_path: "string",
+    genres: [" fsfd", "fdshg"],
+    tagline: "string",
+  }; 
+
+  /* const testSerie:Serie = {
+    id: 6,
+    original_name: "string",
+    first_air_date: "string",
+    vote_average: 9,
+    overview: "string",
+    poster_path: "string",
+    original_language: "string",
+    number_of_seasons: 5,
+    seasons: [{name:'mark'}],
+    created_by: SerieCrew[],
+  } */
   
-  const movieList = type == "movie" ? await GetMoviesList(listName, lang) : [];
+  const movieList =
+    type == "movie" ? await GetMoviesList(listName, lang) : [testMovie];
   const serieList =
     type == "serie" ? await GetSerieList(listName, lang) : [];
     
