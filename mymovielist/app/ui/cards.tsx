@@ -1,6 +1,6 @@
-import { Movie, Serie, CastActor, SeasonInfo } from "@/app/lib/definitions";
+import { Movie, Serie, CastPerson, SeasonInfo } from "@/app/lib/definitions";
 import {
-  CastActorImgLink,
+  CastPersonImgLink,
   PersonNotFound,
   PosterNotFound,
 } from "../lib/globals";
@@ -74,7 +74,7 @@ export async function SerieCard({ cardInfo }: { cardInfo: Serie }) {
 }
 
 //
-export async function ActorCard({ cardInfo }: { cardInfo: CastActor }) {
+export async function PersonCard({ cardInfo }: { cardInfo: CastPerson }) {
   return (
     <div className="flex flex-col items-center gap-6 rounded-2xl  w-fit text-md mr-5 h-fit bg-linear-to-bl from-violet-500 to-blue-500">
       <Link href={`/person/${cardInfo.id}`}>
@@ -83,7 +83,7 @@ export async function ActorCard({ cardInfo }: { cardInfo: CastActor }) {
             {cardInfo.profile_path ? (
               <img
                 className="w-[150] rounded-t-lg"
-                src={`${CastActorImgLink}${cardInfo.profile_path}`}
+                src={`${CastPersonImgLink}${cardInfo.profile_path}`}
               />
             ) : (
               PersonNotFound

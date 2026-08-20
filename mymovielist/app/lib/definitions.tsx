@@ -24,7 +24,7 @@ export interface Serie {
   created_by: SerieCrew[];
 }
 
-export interface CastActor {
+export interface CastPerson {
   id: number;
   name: string;
   character: string;

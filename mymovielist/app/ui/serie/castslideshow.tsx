@@ -1,5 +1,5 @@
 import { GetSerieCast } from "@/app/lib/data";
-import { ActorCard } from "@/app/ui/cards";
+import { PersonCard } from "@/app/ui/cards";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link"
 
@@ -16,7 +16,7 @@ export default async function CastSlideShow({ id }: { id: number }) {
       {cast.slice(0, 9).map((actor) => {
         return (
           <div key={actor.id}>
-            <ActorCard cardInfo={actor} />
+            <PersonCard cardInfo={actor} />
           </div>
         );
       })}

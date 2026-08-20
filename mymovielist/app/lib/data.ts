@@ -1,7 +1,7 @@
 "use server";
 
 import {
-  CastActor,
+  CastPerson,
   Movie,
   Serie,
   MovieInfo,
@@ -52,7 +52,7 @@ export async function GetMoviesList(
   }
 }
 
-export async function GetMovieCast(id: number): Promise<CastActor[]> {
+export async function GetMovieCast(id: number): Promise<CastPerson[]> {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/credits`,
@@ -67,7 +67,7 @@ export async function GetMovieCast(id: number): Promise<CastActor[]> {
     const data = await response.json();
 
     const cast = data.cast.filter(
-      (person: CastActor) => person.known_for_department == "Acting",
+      (person: CastPerson) => person.known_for_department == "Acting",
     );
 
     return cast;
@@ -158,7 +158,7 @@ export async function GetSerieList(
   }
 }
 
-export async function GetSerieCast(id: number): Promise<CastActor[]> {
+export async function GetSerieCast(id: number): Promise<CastPerson[]> {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/tv/${id}/credits`,
@@ -173,7 +173,7 @@ export async function GetSerieCast(id: number): Promise<CastActor[]> {
     const data = await response.json();
 
     const cast = data.cast.filter(
-      (person: CastActor) => person.known_for_department == "Acting",
+      (person: CastPerson) => person.known_for_department == "Acting",
     );
 
     return cast;

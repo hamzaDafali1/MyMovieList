@@ -5,7 +5,7 @@ export var InfoCardImgLink =
   "https://media.themoviedb.org/t/p/w300_and_h450_face/";
 export var BackdropImgLink =
   "https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces";
-export var CastActorImgLink =
+export var CastPersonImgLink =
   "https://media.themoviedb.org/t/p/w138_and_h175_face/";
 
 export var PersonNotFound = (

@@ -33,7 +33,7 @@ export default async function infoCard({ serieId }: { serieId: number }) {
               src={`${InfoCardImgLink}${movieInfo.poster_path}`}
             />
           </div>
-          <div className="flex  flex-col w-full items-center md:w-1/2 md:items-start pl-10">
+          <div className="flex text-center flex-col w-full items-center md:w-1/2 md:items-start pl-10">
             <div>
               <h1 className="text-4xl text-white font-bold">
                 {movieInfo.original_name}{" "}
