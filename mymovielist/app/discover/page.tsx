@@ -14,16 +14,17 @@ export default function Page(){
           <div>
             <h1 className="text-3xl">Popular Movies</h1>
 
-
+            <SlideShow listName="popular" lang="en-US" type="movie" />
           </div>
           <div>
             <h1 className="text-3xl">Top Rated Movies</h1>
 
-
+            <SlideShow listName="top_rated" lang="en-US" type="movie" />
           </div>
           <div>
             <h1 className="text-3xl">Popular TV Shows</h1>
 
+            <SlideShow listName="popular" lang="en-US" type="serie" />
           </div>
         </div>
       </div>
