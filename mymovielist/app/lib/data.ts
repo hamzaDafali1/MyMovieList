@@ -189,11 +189,9 @@ export async function GetSeasonInfo(
 ): Promise<SeasonInfo[]> {
   try {
     const urls = Array.from(
-      { length: nbrSeasons+1 },
+      { length: nbrSeasons + 1 },
       (_, index) => `https://api.themoviedb.org/3/tv/${id}/season/${index}`,
     );
-
-    
 
     const promises = urls.map(async (url) => {
       try {
@@ -216,8 +214,7 @@ export async function GetSeasonInfo(
       .filter((res) => res.status === "fulfilled")
       .map((res) => res.value);
 
-    const filterdSeasons = seasons.filter((season) => season!= null);
-
+    const filterdSeasons = seasons.filter((season) => season != null);
 
     return filterdSeasons;
   } catch (error) {
@@ -248,5 +245,21 @@ export async function GetSerieCrew(id: number): Promise<SerieCrew[]> {
   } catch (error) {
     console.error(error);
     return [];
+  }
+}
+
+export async function GetPersonById(id: number) {
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/person/${id}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+        accept: "application/json",
+      },
+    });
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    return error;
   }
 }

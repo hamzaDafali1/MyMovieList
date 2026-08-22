@@ -8,6 +8,9 @@ export var BackdropImgLink =
 export var CastPersonImgLink =
   "https://media.themoviedb.org/t/p/w138_and_h175_face/";
 
+export var CastPersonMainImgLink =
+  "https://media.themoviedb.org/t/p/w300_and_h450_face/";
+
 export var PersonNotFound = (
   <div className="w-[150] h-[190] flex flex-col items-center justify-center border-b-1">
     <UserCircleIcon className="w-1/2" />
