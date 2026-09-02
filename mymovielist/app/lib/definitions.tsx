@@ -82,3 +82,14 @@ export interface SerieEpisode {
   still_path: string;
 }
 
+export interface PersonInfo {
+  id: number;
+  name: string;
+  birthday: string;
+  deathday: string;
+  also_known_as: string[];
+  gender: number;
+  place_of_birth: string;
+  known_for_department: string;
+  profile_path: string;
+}

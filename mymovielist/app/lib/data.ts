@@ -263,3 +263,20 @@ export async function GetPersonById(id: number) {
     return error;
   }
 }
+
+export async function GetPersonsWorks(id: number){
+  try{
+    const response = await fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits`, {
+      headers: {
+      Authorization: `Bearer ${process.env.API_READ_ACCESS_TOKEN}`,
+      accept: "application/json",
+    }} );
+
+    const data = response.json();
+
+    
+
+  } catch(error){
+    return error
+  }
+}
