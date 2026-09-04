@@ -12,21 +12,9 @@ export default async function SlideShow({
   type: string;
 }) {
 
-  const testMovie: Movie = {
-    id: 2,
-    original_title: "string",
-    release_date: "string",
-    vote_average: 3,
-    overview: "string",
-    poster_path: "string",
-    original_language: "string",
-    backdrop_path: "string",
-    genres: [" fsfd", "fdshg"],
-    tagline: "string",
-  }; 
   
   const movieList =
-    type == "movie" ? await GetMoviesList(listName, lang) : [testMovie];
+    type == "movie" ? await GetMoviesList(listName, lang) : [];
   const serieList =
     type == "serie" ? await GetSerieList(listName, lang) : [];
     

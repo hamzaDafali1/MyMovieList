@@ -7,6 +7,8 @@ import {
 import Link from "next/link";
 
 export async function MovieCard({ cardInfo }: { cardInfo: Movie }) {
+  
+
   return (
     <div className="flex flex-col items-center gap-6 rounded-2xl  w-fit rounded-none text-md mr-5 h-fit ">
       <Link href={`/movie/${cardInfo.id}`}>
@@ -29,7 +31,7 @@ export async function MovieCard({ cardInfo }: { cardInfo: Movie }) {
             <div className="flex gap-2 font-medium text-blue-500 dark:text-blue-500 gap-y-8">
               <span className="">{cardInfo.vote_average.toFixed(2)}/10 . </span>
               <span className="">
-                {cardInfo.original_language.toUpperCase()}
+                {cardInfo.original_language}
               </span>
             </div>
           </div>

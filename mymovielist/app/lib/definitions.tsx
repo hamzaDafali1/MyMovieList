@@ -9,6 +9,7 @@ export interface Movie {
   backdrop_path: string;
   genres: string[];
   tagline: string;
+  spoken_languages: Spoken_languages[];
 }
 
 export interface Serie {
@@ -22,6 +23,7 @@ export interface Serie {
   number_of_seasons: number;
   seasons: SeasonInfo[];
   created_by: SerieCrew[];
+  spoken_languages: Spoken_languages[];
 }
 
 export interface CastPerson {
@@ -92,4 +94,10 @@ export interface PersonInfo {
   place_of_birth: string;
   known_for_department: string;
   profile_path: string;
+}
+
+export interface Spoken_languages {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
 }

@@ -10,7 +10,18 @@ export default async function AboutPerson({id}: {id:number}){
           <div className="text-5xl font-semibold">{personInfo.name}</div>
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl">Biography</h1>
-            <p className="text-md">{personInfo.biography}</p>
+            <input
+              type="checkbox"
+              className="checked:h-fit"
+              name="bio"
+              id="bio"
+            />
+            <label className="" htmlFor="bio">
+              <p className="text-md overflow-hidden h-[300]">
+                {personInfo.biography}
+                <span className="font-semibold"> ...</span>
+              </p>
+            </label>
           </div>
         </div>
       </div>

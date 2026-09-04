@@ -97,7 +97,7 @@ export default async function infoCard({ movieId }: { movieId: number }) {
                 Director:
               </span>
               <span className="text-md text-white text-gray-200 inline px-1 mx-1  text-wrap underline">
-                <Link href={`/person/${director[0].id}`}>
+                <Link href={`/person/${director[0].id ? director[0].id : 0}`}>
                   {director[0].name}
                 </Link>
               </span>

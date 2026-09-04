@@ -41,18 +41,20 @@ export default async function PersonalDetails({id}: {id: number}){
               <p className="font-semibold">Place of Birth</p>
               <p className="">{personInfo.place_of_birth}</p>
             </li>
-            <li>
+            { personInfo.also_known_as[0] && <li>
               <p className="font-semibold">Also Known As:</p>
               <p className="flex flex-col">
-                {personInfo.also_known_as.map((alias) => {
-                  return (
-                    <span key={personInfo.also_known_as.indexOf(alias)}>
-                      {alias}
-                    </span>
-                  );
-                })}
+                {personInfo.also_known_as.map(
+                  (alias) => {
+                    return (
+                      <span key={personInfo.also_known_as.indexOf(alias)}>
+                        {alias}
+                      </span>
+                    );
+                  },
+                )}
               </p>
-            </li>
+            </li>}
           </ul>
         </div>
       </div>

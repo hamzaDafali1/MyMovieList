@@ -274,9 +274,11 @@ export async function GetPersonsWorks(id: number){
 
     const data = response.json();
 
-    
+    return data;
 
   } catch(error){
     return error
   }
 }
+
+
