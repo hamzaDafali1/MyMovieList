@@ -8,7 +8,8 @@ export default async function infoCard({ movieId }: { movieId: number }) {
   const movieInfo = await GetMovieById(movieId);
   const crew = await GetMovieCrew(movieId);
   const director = crew.filter((person) => person.job == "Director");
-
+  console.log(crew);
+  
 
   return (
     <div

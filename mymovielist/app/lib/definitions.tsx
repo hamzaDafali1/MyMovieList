@@ -1,3 +1,5 @@
+import { MovieCard } from "../ui/cards";
+
 export interface Movie {
   id: number;
   original_title: string;
@@ -100,4 +102,8 @@ export interface Spoken_languages {
   english_name: string;
   iso_639_1: string;
   name: string;
+}
+
+export interface MediaType extends Movie, Serie {
+  media_type: string;
 }

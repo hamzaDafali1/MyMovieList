@@ -91,11 +91,9 @@ export async function GetMovieCrew(id: number): Promise<MovieCrew[]> {
 
     const data = await response.json();
 
-    const cast = data.crew.filter(
-      (person: MovieCrew) => person.known_for_department != "Acting",
-    );
+    const crew = data.crew;
 
-    return cast;
+    return crew;
   } catch (error) {
     console.error(error);
     return [];
@@ -237,11 +235,9 @@ export async function GetSerieCrew(id: number): Promise<SerieCrew[]> {
 
     const data = await response.json();
 
-    const cast = data.crew.filter(
-      (person: SerieCrew) => person.known_for_department != "Acting",
-    );
+    const crew = data.crew;
 
-    return cast;
+    return crew;
   } catch (error) {
     console.error(error);
     return [];
@@ -272,7 +268,9 @@ export async function GetPersonsWorks(id: number){
       accept: "application/json",
     }} );
 
-    const data = response.json();
+    const data = await response.json();
+    const knownWorks = data.cast; 
+    // sort by popularity and only return 8
 
     return data;
 
