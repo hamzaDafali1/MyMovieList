@@ -29,8 +29,16 @@ body {
   display: none;
 }
 
+#lbl p{
+  height: 9lh;
+}
+
 #bio:checked + label > p {
     height: auto;
+
+}
+#bio:checked + label > span {
+    display: none;
 
 }
 

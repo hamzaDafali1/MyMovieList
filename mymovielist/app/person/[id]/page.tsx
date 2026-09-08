@@ -2,6 +2,7 @@ import PersonalDetails from "@/app/ui/person/personalDetails";
 import AboutPerson from "@/app/ui/person/aboutPerson";
 import { GetPersonById } from "@/app/lib/data";
 import { CastPersonMainImgLink } from "@/app/lib/globals";
+import KnownWorks from "@/app/ui/person/knownWorks";
 
 export default async function Page(props: { params: Promise<{ id: number }> }){
     const params = await props.params;
@@ -16,6 +17,7 @@ export default async function Page(props: { params: Promise<{ id: number }> }){
           </div>
           <div>
             <AboutPerson id={id} />
+            <KnownWorks id={id} />
           </div>
         </div>
       </div>

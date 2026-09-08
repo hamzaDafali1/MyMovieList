@@ -16,11 +16,13 @@ export default async function AboutPerson({id}: {id:number}){
               name="bio"
               id="bio"
             />
-            <label className="" htmlFor="bio">
-              <p className="text-md overflow-hidden h-[300]">
-                {personInfo.biography}
-                <span className="font-semibold"> ...</span>
-              </p>
+            <label id="lbl" className="" htmlFor="bio">
+              <p className="text-md overflow-hidden">{personInfo.biography}</p>
+              {personInfo.biography.length > 400 &&
+                <span className="mt-1 font-semibold cursor-pointer">
+                  read more...
+                </span>
+              }
             </label>
           </div>
         </div>

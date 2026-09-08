@@ -1,11 +1,12 @@
 import { GetPersonsWorks } from "@/app/lib/data"
 
-export default async function KnownWorks(id:number) {
-    const knownWorks = GetPersonsWorks(id);
+export default async function KnownWorks({ id }: { id: number }) {
+  const knownWorks = await GetPersonsWorks(id);
 
-    return (
-        <div>
+    
+  return (<div>
+    <div>
 
-        </div>
-    )
+    </div>
+  </div>);
 }
