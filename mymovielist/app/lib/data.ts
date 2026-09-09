@@ -9,6 +9,7 @@ import {
   SerieEpisode,
   SeasonInfo,
   SerieCrew,
+  MediaType,
 } from "@/app/lib/definitions";
 import { env } from "process";
 
@@ -260,7 +261,7 @@ export async function GetPersonById(id: number) {
   }
 }
 
-export async function GetPersonsWorks(id: number){
+export async function GetPersonsWorks(id: number): Promise<MediaType[]>{
   try{
     const response = await fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits`, {
       headers: {
@@ -269,13 +270,21 @@ export async function GetPersonsWorks(id: number){
     }} );
 
     const data = await response.json();
-    const knownWorks = data.cast; 
+    const castWorks = data.cast; 
+    const crewWorks = data.crew;
+    const mixedWorks = [...castWorks, ...crewWorks];
+    const knownWorks = [
+      ...new Map(mixedWorks.map((item) => [item.id, item])).values(),
+    ].sort((work1, work2) => work2.popularity - work1.popularity);
+
+    
     // sort by popularity and only return 8
 
-    return data;
+    return knownWorks;
 
   } catch(error){
-    return error
+    console.log(error);
+    return []
   }
 }
 

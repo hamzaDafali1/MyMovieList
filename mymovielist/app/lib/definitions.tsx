@@ -12,6 +12,7 @@ export interface Movie {
   genres: string[];
   tagline: string;
   spoken_languages: Spoken_languages[];
+  popularity: number;
 }
 
 export interface Serie {
@@ -26,6 +27,7 @@ export interface Serie {
   seasons: SeasonInfo[];
   created_by: SerieCrew[];
   spoken_languages: Spoken_languages[];
+  popularity: number;
 }
 
 export interface CastPerson {

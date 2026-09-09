@@ -4,11 +4,12 @@ import { MediaType } from "@/app/lib/definitions";
 
 export default async function KnownWorks({ id }: { id: number }) {
   const knownWorks = await GetPersonsWorks(id);
-  console.log(knownWorks);
+
+  console.log(knownWorks.slice(0, 7));
   
     
   return (
-    <div className="overflow-scroll">
+    <div>
       <div
         className="flex flex-left align-center content-center overflow-scroll mt-7 mb-10 h-fit overflow-y-auto
         [&::-webkit-scrollbar]:w-2
@@ -18,7 +19,7 @@ export default async function KnownWorks({ id }: { id: number }) {
         dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
        "
       >
-        {knownWorks.cast.map((media: MediaType) => {
+        {knownWorks.slice(0, 7).map((media: MediaType) => {
           return (
             <div key={media.id}>
               {media.media_type == "movie" && <MovieCard cardInfo={media} />}
